@@ -1,0 +1,71 @@
+{
+ "summary": {
+  "train": {
+   "n_problems": 40,
+   "n_templates": 4,
+   "distinct_answers": 25,
+   "most_common_answer": [
+    "15",
+    3
+   ],
+   "answer_leaked_in_statement": 6,
+   "mean_question_chars": 280
+  },
+  "test": {
+   "n_problems": 40,
+   "n_templates": 4,
+   "distinct_answers": 27,
+   "most_common_answer": [
+    "20",
+    4
+   ],
+   "answer_leaked_in_statement": 6,
+   "mean_question_chars": 274
+  },
+  "ood": {
+   "n_problems": 40,
+   "n_templates": 4,
+   "distinct_answers": 18,
+   "most_common_answer": [
+    "9",
+    5
+   ],
+   "answer_leaked_in_statement": 4,
+   "mean_question_chars": 292
+  }
+ },
+ "param_hash_overlap": {
+  "train&test": 0,
+  "train&ood": 0,
+  "test&ood": 0
+ }
+}
+
+| branch | value | train | test | ood |
+|---|---|---|---|---|
+| category | beverage | 8 | 7 | 0 |
+| category | cheese | 4 | 3 | 0 |
+| category | general | 23 | 23 | 0 |
+| category | red_meat | 5 | 7 | 0 |
+| grade | B | 3 | 3 | 4 |
+| grade | C | 6 | 5 | 18 |
+| grade | D | 12 | 10 | 10 |
+| grade | E | 19 | 20 | 8 |
+| protein_rule | always | 8 | 7 | 0 |
+| protein_rule | counted | 5 | 8 | 0 |
+| protein_rule | dropped | 27 | 25 | 40 |
+| n_ge_11 | False | 7 | 8 | 11 |
+| n_ge_11 | True | 33 | 32 | 29 |
+| grade | A | 0 | 2 | 0 |
+| category | fat | 0 | 0 | 40 |
+
+Ejemplo (test):
+ 2 (A solo para agua); C 3-6; D 7-9; E ≥ 10.
+GRASAS, ACEITES, FRUTOS SECOS Y SEMILLAS:
+- La energía se sustituye por la energía de las saturadas = grasas saturadas × 37 kJ: umbrales 120, 240, ..., 1200 (máx. 10). Las grasas saturadas se sustituyen por el porcentaje saturadas/grasas totales: 10, 16, 22, 28, 34, 40, 46, 52, 58, 64 (el valor puntúa si es igual o mayor que el umbral; máx. 10). Azúcares y sal: como en alimentos.
+- Positivos como en alimentos, pero las proteínas no cuentan si N ≥ 7.
+- Letra: A ≤ -6; B -5 a 2; C 3-10; D 11-18; E ≥ 19.
+Puntuación = N - P. Da la puntuación (un número entero).
+
+Tengo en la mano un envase de hummus. La tabla nutricional dice, por 100 g: grasas 5,8 g, grasas saturadas 3,4 g, proteínas 14,2 g, azúcares 4,0 g, frutas, verduras y legumbres 30 %, fibra 4,8 g, sal 2,66 g, energía 939 kJ. ¿Qué puntuación Nutri-Score le corresponde? Es un alimento general.
+Respuesta: 17

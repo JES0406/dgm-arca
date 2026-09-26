@@ -24,9 +24,9 @@ def param_hash(params: dict[str, Any]) -> str:
 
 
 def leaks(answer: str, question: str) -> bool:
-    """Answer appears in the statement, also in Spanish decimal notation (12.34 -> 12,34)."""
+    """Answer appears in the statement as a whole number token (not inside 4,0 or 12.5), also 12,34."""
     variants = {answer, answer.replace(".", ",")}
-    return any(v and re.search(rf"(?<![\d.,]){re.escape(v)}(?![\d])", question) for v in variants)
+    return any(v and re.search(rf"(?<![\d.,]){re.escape(v)}(?![\d]|[.,]\d)", question) for v in variants)
 
 
 def describe_split(problems: list[Problem]) -> dict[str, Any]:

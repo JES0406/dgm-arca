@@ -66,12 +66,14 @@ def main() -> None:
     ap.add_argument("--max-new-tokens", type=int, default=1024)
     ap.add_argument("--batch", type=int, default=10)
     ap.add_argument("--load-4bit", action="store_true")
+    ap.add_argument("--device", default="cuda", help="cuda or cpu (cpu runs in float32)")
     ap.add_argument("--out", default=None)
     args = ap.parse_args()
 
     rows = [json.loads(line) for line in Path(args.data).open(encoding="utf-8")][: args.n]
     tok = AutoTokenizer.from_pretrained(args.model, padding_side="left")
-    kwargs: dict = {"dtype": torch.bfloat16, "device_map": "cuda"}
+    on_cpu = args.device == "cpu"
+    kwargs: dict = {"dtype": torch.float32 if on_cpu else torch.bfloat16, "device_map": args.device}
     if args.load_4bit:
         from transformers import BitsAndBytesConfig
 
@@ -119,7 +121,7 @@ def main() -> None:
 
     n = len(results)
     summary = {
-        "model": args.model + (" (nf4)" if args.load_4bit else ""),
+        "model": args.model + (" (nf4)" if args.load_4bit else "") + (" [cpu fp32]" if on_cpu else ""),
         "data": args.data,
         "n": n,
         "pass@1": round(sum(r["correct"] for r in results) / n, 3),
