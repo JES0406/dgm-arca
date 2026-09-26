@@ -1,0 +1,365 @@
+{
+ "summary": {
+  "model": "Qwen/Qwen3-0.6B (bf16)",
+  "max_new_tokens": 1024,
+  "n": 20,
+  "pass@1": 0.05,
+  "valid_format_rate": 0.0,
+  "truncated_rate": 0.55,
+  "mean_tokens": 829.2,
+  "seconds": 518.0,
+  "pass@1_by_type": {
+   "finish_date": "0/5",
+   "log_update": "1/5",
+   "margin": "0/5",
+   "rate": "0/5"
+  }
+ },
+ "results": [
+  {
+   "branches": {
+    "type": "log_update",
+    "region": "ES-MD",
+    "n_topics": "2",
+    "asked_was_studied": "True",
+    "trap_planned_not_studied": "False",
+    "clamped_at_zero": "False",
+    "n_sessions": "1"
+   },
+   "expected": "15.5",
+   "predicted": "20",
+   "correct": false,
+   "valid_format": false,
+   "tokens": 432,
+   "truncated": false,
+   "raw_tail": " answer is 20 hours.\n</think>\n\nreasoning process here  \nThe user studied \"Variedades diferenciables (GI)\" for 2 hours, and the pending time before registration is 20 hours. Since the pending time is before the session, the remaining hours after the session would be 20 hours.  \n\n<answer> 20 </answer>"
+  },
+  {
+   "branches": {
+    "type": "margin",
+    "region": "ES-MD",
+    "n_topics": "2",
+    "holidays_in_window": "0",
+    "horizon_weeks": "1",
+    "feasible": "False"
+   },
+   "expected": "-14",
+   "predicted": null,
+   "correct": false,
+   "valid_format": false,
+   "tokens": 899,
+   "truncated": false,
+   "raw_tail": "2 + 20). Which is 105 - 32 = 73. \n\nTherefore, the answer is 73 hours.\n</think> <reasoning process> El total de horas en el mes es 15 horas por día, por 30 días (15*30=450 horas). La necesidad es 12 horas para MGP y 20 horas para DRL, totalizando 32 horas. La margen es 450 - 32 = 418 horas. </answer>"
+  },
+  {
+   "branches": {
+    "type": "rate",
+    "region": "ES-MD",
+    "n_topics": "4",
+    "holidays_in_window": "1",
+    "horizon_weeks": "0",
+    "rounded_up": "True"
+   },
+   "expected": "14.25",
+   "predicted": null,
+   "correct": false,
+   "valid_format": false,
+   "tokens": 1024,
+   "truncated": true,
+   "raw_tail": "esday, Friday, Saturday, Sunday). Wait, but the problem says \"estudio solo lunes, miércoles, jueves, sábado, domingo\". So that's 5 study days. So total study hours is 119 hours. Divided by 5 days: 119 / 5 = 23.8 hours per day. Rounded up to the nearest 0.25, which would be 24.0 hours per day.\n\nWait,"
+  },
+  {
+   "branches": {
+    "type": "finish_date",
+    "region": "ES-MD",
+    "n_topics": "2",
+    "holiday_skipped": "False",
+    "target_is_last": "True",
+    "span_weeks": "1"
+   },
+   "expected": "2026-12-18",
+   "predicted": null,
+   "correct": false,
+   "valid_format": false,
+   "tokens": 1024,
+   "truncated": true,
+   "raw_tail": "anning to complete 11.5 hours. So this doesn't add up. Maybe there's a typo. Alternatively, perhaps the user is planning to study 11.5 hours, which would mean that the total time is 11.5 hours. But the problem says that the study time is 10.5. So maybe there's a mistake in the problem. Alternatively"
+  },
+  {
+   "branches": {
+    "type": "log_update",
+    "region": "ES-MD",
+    "n_topics": "4",
+    "asked_was_studied": "True",
+    "trap_planned_not_studied": "False",
+    "clamped_at_zero": "True",
+    "n_sessions": "1"
+   },
+   "expected": "0",
+   "predicted": "0",
+   "correct": true,
+   "valid_format": false,
+   "tokens": 291,
+   "truncated": false,
+   "raw_tail": "aybe the study time was 2 hours, so the remaining time is zero. I should confirm that. The answer would be zero hours.\n</think>\n\nLa pregunta no tiene una respuesta temporal en el momento. Si estudiaste Cadenas de Markov (MP) por 2 horas, entonces no queda tiempo por el mañana. \n\n<answer> 0 </answer>"
+  },
+  {
+   "branches": {
+    "type": "margin",
+    "region": "ES-MD",
+    "n_topics": "3",
+    "holidays_in_window": "2+",
+    "horizon_weeks": "3",
+    "feasible": "False"
+   },
+   "expected": "-2",
+   "predicted": null,
+   "correct": false,
+   "valid_format": false,
+   "tokens": 1024,
+   "truncated": true,
+   "raw_tail": " h.\" So the schedule is for the days mentioned, but the available time is the total hours available from March 8 to March 29. \n\nWait, but how do I calculate the available hours? Maybe the user is asking for the time they have available from the given schedule, not the total days. Let me think again."
+  },
+  {
+   "branches": {
+    "type": "rate",
+    "region": "ES-MD",
+    "n_topics": "4",
+    "holidays_in_window": "1",
+    "horizon_weeks": "2",
+    "rounded_up": "True"
+   },
+   "expected": "4.25",
+   "predicted": null,
+   "correct": false,
+   "valid_format": false,
+   "tokens": 1001,
+   "truncated": false,
+   "raw_tail": " is 186 hours. Therefore, the answer should be 186 hours.\n</think> <reasoning process> Calculamos las horas de estudio para cada tema: MGP (5 horas) → 20 horas, GI (19 horas) → 76 horas, MP (9 horas) → 36 horas, DRL (13.5 horas) → 54 horas. Sumando, obtenemos 20 + 76 + 36 + 54 = 186 horas. </answer>"
+  },
+  {
+   "branches": {
+    "type": "finish_date",
+    "region": "ES-MD",
+    "n_topics": "2",
+    "holiday_skipped": "False",
+    "target_is_last": "False",
+    "span_weeks": "0"
+   },
+   "expected": "2026-10-27",
+   "predicted": null,
+   "correct": false,
+   "valid_format": false,
+   "tokens": 1024,
+   "truncated": true,
+   "raw_tail": "ht. Wait, the user wrote \"Modelos de difusión (MGP): 14 h, estudio lunes 3 h...\" So maybe they split the 14 h into the Models and the study hours. So the Models are 14 h, and the study hours are 3 h on Monday, 3 h on Tuesday, etc. So total is 14 h Models + 14 h study = 28 h. But the user says \"Model"
+  },
+  {
+   "branches": {
+    "type": "log_update",
+    "region": "ES-MD",
+    "n_topics": "4",
+    "asked_was_studied": "False",
+    "trap_planned_not_studied": "False",
+    "clamped_at_zero": "False",
+    "n_sessions": "1"
+   },
+   "expected": "19.5",
+   "predicted": "5.5",
+   "correct": false,
+   "valid_format": false,
+   "tokens": 761,
+   "truncated": false,
+   "raw_tail": "\n</think> <reasoning process> La suma total de las horas asignadas para los Modelos de difusión (MGP) es 19.5 horas. Durante el estudio de Topología (GI), el tiempo asignado es 14 horas. Por lo tanto, la diferencia entre 19.5 horas y 14 horas es 5.5 horas. </reasoning process> <answer> 5.5 </answer>"
+  },
+  {
+   "branches": {
+    "type": "margin",
+    "region": "ES-MD",
+    "n_topics": "4",
+    "holidays_in_window": "0",
+    "horizon_weeks": "4",
+    "feasible": "False"
+   },
+   "expected": "-1",
+   "predicted": null,
+   "correct": false,
+   "valid_format": false,
+   "tokens": 1024,
+   "truncated": true,
+   "raw_tail": ". \n\nBut let me check again. Wait, the available hours per day are as listed. Let me add them again: 1 + 2 + 2 + 0.5 + 4 + 0.5 + 2. Let's add step by step. 1+2=3, +2=5, +0.5=5.5, +4=9.5, +0.5=10, +2=12. So yes, 12 hours per day. But the period is 29 days. So 29 * 12 = 348. Then subtract 49, so 348 - "
+  },
+  {
+   "branches": {
+    "type": "rate",
+    "region": "ES-MD",
+    "n_topics": "4",
+    "holidays_in_window": "2+",
+    "horizon_weeks": "5",
+    "rounded_up": "True"
+   },
+   "expected": "1.5",
+   "predicted": null,
+   "correct": false,
+   "valid_format": false,
+   "tokens": 795,
+   "truncated": false,
+   "raw_tail": " de Markov)**: 4 hours / 24 hours/day ≈ 0.166666 hours/day, rounded up to 1 hour.  \n- **MGP (Modelos basados en energía)**: 12 hours / 24 hours/day = 0.5 hours/day, rounded up to 1 hour.  \n- **IAP (Procesos gaussianos)**: 5 hours / 24 hours/day ≈ 0.208333 hours/day, rounded up to 1 hour.  \n</answer>"
+  },
+  {
+   "branches": {
+    "type": "finish_date",
+    "region": "ES-MD",
+    "n_topics": "2",
+    "holiday_skipped": "False",
+    "target_is_last": "False",
+    "span_weeks": "0"
+   },
+   "expected": "2027-03-07",
+   "predicted": null,
+   "correct": false,
+   "valid_format": false,
+   "tokens": 1024,
+   "truncated": true,
+   "raw_tail": "r each day is the sum of the hours listed. So the total study time is 14.5 hours. Therefore, the finish date would be adding 14.5 hours to the start date. Starting on Friday, March 5, 2027, adding 14.5 hours. Let me calculate that. \n\nFriday, March 5 + 14 hours = Friday, March 19. Then 0.5 hours more"
+  },
+  {
+   "branches": {
+    "type": "log_update",
+    "region": "ES-MD",
+    "n_topics": "3",
+    "asked_was_studied": "True",
+    "trap_planned_not_studied": "False",
+    "clamped_at_zero": "False",
+    "n_sessions": "1"
+   },
+   "expected": "0.75",
+   "predicted": "1 hora y 45 minutos",
+   "correct": false,
+   "valid_format": false,
+   "tokens": 225,
+   "truncated": false,
+   "raw_tail": "answer should be 1 hour and 45 minutes.\n</think> <reasoning process> El tiempo total para el MGP es 3,5 horas. La sesión actual está a 2 horas y 45 minutos. Restando el tiempo de la sesión actual de 3,5 horas, obtenemos 1 hora y 45 minutos. </reasoning process> <answer> 1 hora y 45 minutos </answer>"
+  },
+  {
+   "branches": {
+    "type": "margin",
+    "region": "ES-MD",
+    "n_topics": "4",
+    "holidays_in_window": "2+",
+    "horizon_weeks": "5",
+    "feasible": "True"
+   },
+   "expected": "34",
+   "predicted": null,
+   "correct": false,
+   "valid_format": false,
+   "tokens": 537,
+   "truncated": false,
+   "raw_tail": "be -115.\n</think> <reasoning process> La totalidad de las horas que el estudiante estudia es 29 horas. El período de estudio tiene 6 días, cada día 24 horas, por lo que el total es 6*24=144 horas. La diferencia entre 144 horas y 29 horas es 115 horas. Por lo tanto, el margen es -115 horas. </answer>"
+  },
+  {
+   "branches": {
+    "type": "rate",
+    "region": "ES-MD",
+    "n_topics": "4",
+    "holidays_in_window": "2+",
+    "horizon_weeks": "0",
+    "rounded_up": "True"
+   },
+   "expected": "13",
+   "predicted": null,
+   "correct": false,
+   "valid_format": false,
+   "tokens": 1024,
+   "truncated": true,
+   "raw_tail": "l is 8 hours and 9 minutes, which is 8.15 hours. Wait, but maybe the question is expecting to calculate the minimum hours each day, but since they study the same hours each day, the total is 43 hours divided by 5 days, which is 8.6 hours per day. Rounded to the nearest 0.25 hour. So 8.6 hours is 8.6"
+  },
+  {
+   "branches": {
+    "type": "finish_date",
+    "region": "ES-MD",
+    "n_topics": "3",
+    "holiday_skipped": "False",
+    "target_is_last": "True",
+    "span_weeks": "2"
+   },
+   "expected": "2027-05-25",
+   "predicted": null,
+   "correct": false,
+   "valid_format": false,
+   "tokens": 1024,
+   "truncated": true,
+   "raw_tail": " on those days, and they have to complete all activities. But how does the time allocation fit in? Let me think again. \n\nThe user has a schedule that includes their study times. The total study time is 12.5h. The DRL is 14h, so the remaining time is 21h. But the user starts studying on Saturday 8 of"
+  },
+  {
+   "branches": {
+    "type": "log_update",
+    "region": "ES-MD",
+    "n_topics": "2",
+    "asked_was_studied": "True",
+    "trap_planned_not_studied": "False",
+    "clamped_at_zero": "False",
+    "n_sessions": "1"
+   },
+   "expected": "12",
+   "predicted": null,
+   "correct": false,
+   "valid_format": false,
+   "tokens": 1024,
+   "truncated": true,
+   "raw_tail": "sday), then the remaining time is from Thursday to the current day (Wednesday), which is not possible. Therefore, the remaining time is from the next day (Thursday) to the current day (Wednesday), which is negative, meaning that the user has already studied all the time. But the pending time is 13.5"
+  },
+  {
+   "branches": {
+    "type": "margin",
+    "region": "ES-MD",
+    "n_topics": "3",
+    "holidays_in_window": "2+",
+    "horizon_weeks": "3",
+    "feasible": "True"
+   },
+   "expected": "18",
+   "predicted": null,
+   "correct": false,
+   "valid_format": false,
+   "tokens": 380,
+   "truncated": false,
+   "raw_tail": " available hours are 9 hours. So the margin would be 9 - 19, which is negative. That means they don't have enough time. So the answer should be negative, indicating they don't have enough available hours.\n</think>\nreasoning process here\navailable hours: 9 hours\nrequired hours: 19 hours\nanswer\n-1.0 h"
+  },
+  {
+   "branches": {
+    "type": "rate",
+    "region": "ES-MD",
+    "n_topics": "3",
+    "holidays_in_window": "2+",
+    "horizon_weeks": "4",
+    "rounded_up": "True"
+   },
+   "expected": "1",
+   "predicted": null,
+   "correct": false,
+   "valid_format": false,
+   "tokens": 1024,
+   "truncated": true,
+   "raw_tail": "as (IAP): 10,5 h; Cálculo de variaciones (MD): 5,5 h antes del examen del martes 30 de marzo de 2027?\" So, they want the study hours each day, rounded up to the nearest 0.25, for each subject.\n\nSo, for each subject, the study hours are 14, 42, 22 hours per day. So, for each day, the study hours are "
+  },
+  {
+   "branches": {
+    "type": "finish_date",
+    "region": "ES-MD",
+    "n_topics": "4",
+    "holiday_skipped": "False",
+    "target_is_last": "False",
+    "span_weeks": "1"
+   },
+   "expected": "2026-12-02",
+   "predicted": null,
+   "correct": false,
+   "valid_format": false,
+   "tokens": 1024,
+   "truncated": true,
+   "raw_tail": "er November 19, 2026. Let me check the dates again. November 19 + 2 days is November 21, 2026. But maybe I made a mistake in the time calculation. Alternatively, maybe the time commitment is 7 hours, so 7 hours / 2.5 hours per day = 2.8 days, which is 3 days. Therefore, the answer would be November "
+  }
+ ]
+}
