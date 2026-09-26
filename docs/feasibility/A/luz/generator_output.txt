@@ -1,0 +1,68 @@
+{
+ "summary": {
+  "train": {
+   "n_problems": 40,
+   "n_templates": 4,
+   "distinct_answers": 39,
+   "most_common_answer": [
+    "65.11",
+    2
+   ],
+   "answer_leaked_in_statement": 0,
+   "mean_question_chars": 346
+  },
+  "test": {
+   "n_problems": 40,
+   "n_templates": 4,
+   "distinct_answers": 39,
+   "most_common_answer": [
+    "31.35",
+    2
+   ],
+   "answer_leaked_in_statement": 0,
+   "mean_question_chars": 360
+  },
+  "ood": {
+   "n_problems": 40,
+   "n_templates": 4,
+   "distinct_answers": 40,
+   "most_common_answer": [
+    "145.79",
+    1
+   ],
+   "answer_leaked_in_statement": 0,
+   "mean_question_chars": 644
+  }
+ },
+ "param_hash_overlap": {
+  "train&test": 0,
+  "train&ood": 0,
+  "test&ood": 0
+ }
+}
+
+| branch | value | train | test | ood |
+|---|---|---|---|---|
+| territory | canarias | 10 | 9 | 8 |
+| territory | ceuta_melilla | 4 | 3 | 2 |
+| territory | peninsula | 26 | 28 | 30 |
+| bono | none | 21 | 18 | 20 |
+| bono | severo | 8 | 9 | 11 |
+| bono | vulnerable | 11 | 13 | 9 |
+| bono_cap_binds | False | 4 | 9 | 1 |
+| bono_cap_binds | True | 15 | 13 | 19 |
+| bono_cap_binds | n/a | 21 | 18 | 20 |
+| iee_minimum_applies | False | 40 | 40 | 40 |
+| p1_eq_p2 | False | 12 | 19 | 18 |
+| p1_eq_p2 | True | 28 | 21 | 22 |
+| price_change | False | 40 | 40 | 0 |
+| price_change | True | 0 | 0 | 40 |
+
+Ejemplo (test):
+lectricidad: 5,11269632 % de (potencia + energía − descuento del bono social + financiación del bono social), con un mínimo de 1 € por MWh consumido.
+6. Alquiler del contador: 0,026630 € por día.
+7. Impuesto indirecto sobre la suma de todo lo anterior: IVA 21 % en península y Baleares; IGIC 3 % en Canarias; IPSI 1 % en Ceuta y Melilla.
+8. Cada concepto (potencia, energía, descuento, financiación, impuesto eléctrico, contador, impuesto indirecto) se redondea a céntimos antes de sumar.
+
+Mi factura cubre 28 días y vivo en Ceuta. Consumí 253 kWh en valle (P3), 43 kWh en llano (P2) y 178 kWh en punta (P1). Pago la energía a 0,230562 €/kWh en punta, 0,146385 en llano y 0,062480 en valle, y la potencia a 0,106849 €/kW·día (P1) y 0,034668 €/kW·día (P2), con 3,3 kW y 3,3 kW contratados. El titular tiene bono social como consumidor vulnerable severo (categoría A). ¿Cuánto tengo que pagar en total?
+Respuesta: 64.17
