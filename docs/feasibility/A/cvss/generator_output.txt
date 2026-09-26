@@ -1,0 +1,64 @@
+{
+ "summary": {
+  "train": {
+   "n_problems": 40,
+   "n_templates": 4,
+   "distinct_answers": 29,
+   "most_common_answer": [
+    "3.3",
+    3
+   ],
+   "answer_leaked_in_statement": 0,
+   "mean_question_chars": 475
+  },
+  "test": {
+   "n_problems": 40,
+   "n_templates": 4,
+   "distinct_answers": 27,
+   "most_common_answer": [
+    "6.5",
+    5
+   ],
+   "answer_leaked_in_statement": 0,
+   "mean_question_chars": 468
+  },
+  "ood": {
+   "n_problems": 40,
+   "n_templates": 4,
+   "distinct_answers": 29,
+   "most_common_answer": [
+    "5.5",
+    3
+   ],
+   "answer_leaked_in_statement": 0,
+   "mean_question_chars": 496
+  }
+ },
+ "param_hash_overlap": {
+  "train&test": 0,
+  "train&ood": 0,
+  "test&ood": 0
+ }
+}
+
+| branch | value | train | test | ood |
+|---|---|---|---|---|
+| severity | high | 6 | 7 | 9 |
+| severity | low | 12 | 7 | 3 |
+| severity | medium | 22 | 25 | 26 |
+| scope | U | 40 | 40 | 0 |
+| AV | A | 13 | 10 | 8 |
+| AV | L | 12 | 8 | 11 |
+| AV | N | 14 | 19 | 17 |
+| AV | P | 1 | 3 | 4 |
+| PR | H | 13 | 15 | 18 |
+| PR | L | 16 | 14 | 12 |
+| PR | N | 11 | 11 | 10 |
+| roundup_beats_round | False | 23 | 14 | 18 |
+| roundup_beats_round | True | 17 | 26 | 22 |
+| severity | critical | 0 | 1 | 2 |
+| scope | C | 0 | 0 | 40 |
+
+Ejemplo (test):
+Evalúa esta vulnerabilidad con CVSS v3.1 y devuelve solo la puntuación base. Producto: un NAS. Detalles: un usuario anónimo puede lanzarlo, necesita que un administrador visite una página manipulada, la explotación es fiable y repetible, basta con enviar peticiones HTTP al servicio expuesto, el impacto se queda dentro del componente vulnerable, no afecta a la disponibilidad, divulgación total de información, no hay impacto en la integridad.
+Respuesta: 6.5

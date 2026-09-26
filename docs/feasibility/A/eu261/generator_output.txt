@@ -1,0 +1,80 @@
+{
+ "summary": {
+  "train": {
+   "n_problems": 40,
+   "n_templates": 4,
+   "distinct_answers": 12,
+   "most_common_answer": [
+    "0",
+    20
+   ],
+   "answer_leaked_in_statement": 0,
+   "mean_question_chars": 326
+  },
+  "test": {
+   "n_problems": 40,
+   "n_templates": 4,
+   "distinct_answers": 15,
+   "most_common_answer": [
+    "0",
+    13
+   ],
+   "answer_leaked_in_statement": 0,
+   "mean_question_chars": 319
+  },
+  "ood": {
+   "n_problems": 40,
+   "n_templates": 4,
+   "distinct_answers": 9,
+   "most_common_answer": [
+    "0",
+    21
+   ],
+   "answer_leaked_in_statement": 0,
+   "mean_question_chars": 432
+  }
+ },
+ "param_hash_overlap": {
+  "train&test": 0,
+  "train&ood": 0,
+  "test&ood": 0
+ }
+}
+
+| branch | value | train | test | ood |
+|---|---|---|---|---|
+| incident | cancellation | 20 | 15 | 18 |
+| incident | delay | 14 | 17 | 15 |
+| incident | denied_boarding | 6 | 8 | 7 |
+| outcome | cancel_compensated | 7 | 8 | 4 |
+| outcome | cancel_reduced | 3 | 1 | 3 |
+| outcome | delay_compensated | 3 | 9 | 5 |
+| outcome | delay_longhaul_reduced | 3 | 2 | 1 |
+| outcome | delay_under_3h | 5 | 2 | 4 |
+| outcome | denied_compensated | 2 | 3 | 3 |
+| outcome | denied_reduced | 2 | 4 | 3 |
+| outcome | extraordinary | 4 | 4 | 5 |
+| outcome | notice_14d | 3 | 1 | 1 |
+| outcome | notice_7_13_good_reroute | 1 | 1 | 2 |
+| outcome | notice_lt7_good_reroute | 3 | 2 | 3 |
+| outcome | out_of_scope | 2 | 2 | 6 |
+| outcome | volunteer | 2 | 1 | 0 |
+| band | 250 | 13 | 17 | 19 |
+| band | 400 | 12 | 14 | 12 |
+| band | 600 | 15 | 9 | 9 |
+| intra_eu_over_3500 | False | 35 | 38 | 39 |
+| intra_eu_over_3500 | True | 5 | 2 | 1 |
+| extraordinary_claimed | False | 29 | 32 | 29 |
+| extraordinary_claimed | True | 11 | 8 | 11 |
+| scope | in | 38 | 38 | 34 |
+| scope | out | 2 | 2 | 6 |
+| zero | False | 20 | 27 | 19 |
+| zero | True | 20 | 13 | 21 |
+
+Ejemplo (test):
+ en una cancelación o denegación de embarque se ofrece un vuelo alternativo que llega con un retraso no superior a 2 h (tramo de 250 €), 3 h (tramo de 400 €) o 4 h (tramo de 600 €), la compensación se reduce un 50 %.
+7. Circunstancias extraordinarias (meteorología, huelga de control aéreo, impacto de ave) eximen de compensar retrasos y cancelaciones. Una avería técnica o una huelga del propio personal de la aerolínea NO son extraordinarias.
+8. La compensación total es la suma de la de todos los pasajeros del grupo.
+
+La aerolínea alega una huelga de su propia tripulación. Así nos lo explicó Lufthansa cuando, en el vuelo de Copenhague (CPH) a Dublín (DUB), nos cancelaron el vuelo avisando con 6 días de antelación; el vuelo alternativo salía sin adelanto, a la misma hora, antes y llegaba 1 h 40 min después de lo previsto. Son 1241 km y viajaba solo. ¿Qué compensación total podemos reclamar?
+Respuesta: 0
