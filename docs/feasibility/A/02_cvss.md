@@ -45,7 +45,11 @@ uv run python docs/feasibility/A/cvss/generator.py --n 40
 
 ## 2. Difficulty
 
-PASS1_CVSS
+**Not measured.** Qwen3-0.6B pass@1 runs were started (CPU fp32, 20 problems, 1024 tokens, harness `common/pass_at_1.py`) but stopped by the user before finishing: the laptop GPU was occupied by the parallel Agent B study. Row C stays **tbd**. ESTIMATE: base 0.6B low (<20 %) given multi-step rules; teacher Qwen3-4B unmeasured. Rerun command:
+
+```
+uv run python docs/feasibility/A/common/pass_at_1.py --data docs/feasibility/A/cvss/data/test.jsonl --model Qwen/Qwen3-0.6B --n 20 --verifier numeric --tol 0 --max-new-tokens 1024 --batch 4
+```
 
 ## 3. External API
 
@@ -129,4 +133,25 @@ paraphrased metrics.
 
 ## 10. Scorecard
 
-SCORECARD_CVSS
+<!-- scorecard:start -->
+| Row | Criterion | Score | Justification |
+|---|---|---|---|
+| A | Verifiable task exists | 3 | Closed-form FIRST formula; self-checked vs NVD (Log4Shell 10.0) |
+| B | Dataset without hand labels | 3 | Generator + 30,030 mineable NVD pairs (2023 feed) |
+| C | Right difficulty for 0.6B-1.7B | tbd | see §2 |
+| D | Real, free external API | 3 | NVD API (200, keyless) + OSV.dev (18 advisories) + KEV feed (1,726) |
+| E | Meaningful compute tool | 3 | Formula with Roundup trap (~50 % of problems) |
+| F | Action tool, sandboxed, observable | 2 | Ticket file/webhook; fine but generic |
+| G | Corpus: available, licensed, parseable | 2 | Public-domain NIST + FIRST docs parse cleanly; English-only |
+| H | Gold set writable & meaningful | 2 | Spec/examples details; the model partly knows CVSS already |
+| I | Agent tasks chain >= 2 tools, auto-checkable | 3 | NVD/OSV/KEV + calculator + ticket; exact checks |
+| J | Domain reward is natural | 3 | Per-metric partial credit: dense and aligned |
+| K | Interpretation material | 3 | Scope-Changed OOD, Roundup trap, template vs real NVD prose |
+| L | Real user & portfolio value | 3 | Security teams; strong portfolio |
+| M | Risk / safety overhead (3 = light) | 3 | Scoring/patching only; no personal data |
+| N | Team fit & motivation | 2 | ASSUMPTION: unknown team |
+| O | Differentiation from the 13 examples | 2 | Related to bug triage example, different verifier and domain |
+| | **Total** | **37/45** | kill rows A-D all > 0 |
+
+**Verdict: GO**
+<!-- scorecard:end -->

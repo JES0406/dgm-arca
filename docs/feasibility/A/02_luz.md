@@ -43,7 +43,11 @@ uv run python docs/feasibility/A/luz/generator.py --n 40
 
 ## 2. Difficulty
 
-PASS1_LUZ
+**Not measured.** Qwen3-0.6B pass@1 runs were started (CPU fp32, 20 problems, 1024 tokens, harness `common/pass_at_1.py`) but stopped by the user before finishing: the laptop GPU was occupied by the parallel Agent B study. Row C stays **tbd**. ESTIMATE: base 0.6B low (<20 %) given multi-step rules; teacher Qwen3-4B unmeasured. Rerun command:
+
+```
+uv run python docs/feasibility/A/common/pass_at_1.py --data docs/feasibility/A/luz/data/test.jsonl --model Qwen/Qwen3-0.6B --n 20 --verifier numeric --tol 0.01 --max-new-tokens 1024 --batch 4
+```
 
 ## 3. External API
 
@@ -125,4 +129,25 @@ exactly the "Spanish domain under-represented in the model" that the brief recom
 
 ## 10. Scorecard
 
-SCORECARD_LUZ
+<!-- scorecard:start -->
+| Row | Criterion | Score | Justification |
+|---|---|---|---|
+| A | Verifiable task exists | 3 | Bill total to the cent; `solve` implements BOE rules; tolerance 0.01 with comma-aware parser |
+| B | Dataset without hand labels | 3 | Generator, 0 leaks, 0 overlap, 4 templates, OOD = mid-period price change |
+| C | Right difficulty for 0.6B-1.7B | tbd | see §2 |
+| D | Real, free external API | 3 | REData keyless, verified 2026-09-26 (24 PVPC values) |
+| E | Meaningful compute tool | 3 | 7 rounded concepts + cheapest-window search over 24 prices |
+| F | Action tool, sandboxed, observable | 3 | .ics file, DTSTART checkable against recomputed optimum |
+| G | Corpus: available, licensed, parseable | 3 | BOE (reusable with attribution), Spanish, parses; tables need row chunking (16.9 %) |
+| H | Gold set writable & meaningful | 3 | 2026 toll values, IEE floors, bono rules: facts a 2025 model lacks |
+| I | Agent tasks chain >= 2 tools, auto-checkable | 3 | 5 tasks with numeric/file checks; impossible task = switch supplier |
+| J | Domain reward is natural | 3 | Breakdown reward = the professor's own finance suggestion |
+| K | Interpretation material | 2 | Bono-cap branch, territory, OOD, regulatory drift; dead IEE-floor branch |
+| L | Real user & portfolio value | 3 | Every household; team members are users |
+| M | Risk / safety overhead (3 = light) | 2 | Financial disclaimer + regulated values drift |
+| N | Team fit & motivation | 2 | ASSUMPTION: unknown team |
+| O | Differentiation from the 13 examples | 2 | Near the fiscal-copilot example; different base, live API, scheduling action |
+| | **Total** | **38/45** | kill rows A-D all > 0 |
+
+**Verdict: GO**
+<!-- scorecard:end -->

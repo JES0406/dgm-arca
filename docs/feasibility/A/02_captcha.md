@@ -148,4 +148,25 @@ verifier with reward-hacking risk and sandbox security as part of the grade:
 
 ## 10. Scorecard
 
-SCORECARD_CAPTCHA
+<!-- scorecard:start -->
+| Row | Criterion | Score | Justification |
+|---|---|---|---|
+| A | Verifiable task exists | 2 | Executable pipeline verifier works (RapidOCR); depends on OCR engine |
+| B | Dataset without hand labels | 3 | Unlimited renderer, clean charset |
+| C | Right difficulty for 0.6B-1.7B | 2 | Headroom measured: random 32 %, best fixed 50 %, oracle 71 %; VLM pass@1 ESTIMATE |
+| D | Real, free external API | 1 | HF datasets-server real but artificial for the user |
+| E | Meaningful compute tool | 3 | OpenCV + OCR execution is the experiment |
+| F | Action tool, sandboxed, observable | 2 | Robustness report file |
+| G | Corpus: available, licensed, parseable | 2 | CC BY arXiv papers parse; English, generic |
+| H | Gold set writable & meaningful | 1 | Model already knows generic CV/captcha literature |
+| I | Agent tasks chain >= 2 tools, auto-checkable | 2 | Tasks checkable but self-referential |
+| J | Domain reward is natural | 2 | Cost penalty; 'do nothing' hack |
+| K | Interpretation material | 3 | Headroom, policy vs fixed pipeline, OOD surprise |
+| L | Real user & portfolio value | 1 | Portfolio perception risk; no external user |
+| M | Risk / safety overhead (3 = light) | 1 | ToS/ethics framing + API contract change |
+| N | Team fit & motivation | 2 | User's own idea: motivation high (+), but ASSUMPTION |
+| O | Differentiation from the 13 examples | 3 | New domain |
+| | **Total** | **30/45** | kill rows A-D all > 0 |
+
+**Verdict: GO-IF-FIXED (professor approves image input to /reasoning; else KILL)**
+<!-- scorecard:end -->

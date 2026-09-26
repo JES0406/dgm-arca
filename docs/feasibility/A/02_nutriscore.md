@@ -36,7 +36,11 @@ uv run python docs/feasibility/A/nutriscore/generator.py --n 40
 
 ## 2. Difficulty
 
-PASS1_NUTRI
+**Not measured.** Qwen3-0.6B pass@1 runs were started (CPU fp32, 20 problems, 1024 tokens, harness `common/pass_at_1.py`) but stopped by the user before finishing: the laptop GPU was occupied by the parallel Agent B study. Row C stays **tbd**. ESTIMATE: base 0.6B low (<20 %) given multi-step rules; teacher Qwen3-4B unmeasured. Rerun command:
+
+```
+uv run python docs/feasibility/A/common/pass_at_1.py --data docs/feasibility/A/nutriscore/data/test.jsonl --model Qwen/Qwen3-0.6B --n 20 --verifier numeric --tol 0 --max-new-tokens 1024 --batch 4
+```
 
 ## 3. External API
 
@@ -113,4 +117,25 @@ red meat, beverages, fats) and threshold boundaries; and the API is also a label
 
 ## 10. Scorecard
 
-SCORECARD_NUTRI
+<!-- scorecard:start -->
+| Row | Criterion | Score | Justification |
+|---|---|---|---|
+| A | Verifiable task exists | 3 | Integer score from official tables; OFF oracle check passes |
+| B | Dataset without hand labels | 3 | Generator + OFF mining (strategy 2) |
+| C | Right difficulty for 0.6B-1.7B | tbd | see §2 |
+| D | Real, free external API | 2 | OFF keyless but 15 req/min, User-Agent required |
+| E | Meaningful compute tool | 2 | Table lookups; model could learn them |
+| F | Action tool, sandboxed, observable | 2 | Shopping-list file |
+| G | Corpus: available, licensed, parseable | 1 | SpF docs EN/FR with unclear reuse licence; AESAN Spanish but generic |
+| H | Gold set writable & meaningful | 2 | Algorithm-update details |
+| I | Agent tasks chain >= 2 tools, auto-checkable | 2 | Barcode comparisons; OFF rate limit |
+| J | Domain reward is natural | 3 | Per-component reward |
+| K | Interpretation material | 2 | Category switches; synthetic realism limited |
+| L | Real user & portfolio value | 2 | Consumers/dietitians |
+| M | Risk / safety overhead (3 = light) | 2 | Health disclaimer |
+| N | Team fit & motivation | 2 | ASSUMPTION: unknown team |
+| O | Differentiation from the 13 examples | 3 | No close example |
+| | **Total** | **31/45** | kill rows A-D all > 0 |
+
+**Verdict: GO-IF-FIXED (mine OFF labels; confirm SpF document licence)**
+<!-- scorecard:end -->
